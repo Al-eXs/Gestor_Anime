@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+	<id>Gluz:AnimeManager</id>
+	<version>0.1.1</version>
+	<file name="index.php">
+		<operation>
+			<search position="before"><![CDATA[require_once($sourcedir . '/Subs-Portal.php');]]></search>
+			<add><![CDATA[
+require_once($sourcedir . '/Subs-Anime.php');]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[// Load SimplePortal.
+	sportal_init();]]></search>
+			<add><![CDATA[
+	//Load Anime Manager
+	anime_manager_init();]]></add>
+		</operation>
+	</file>
+	<file name="$sourcedir/Admin.php">
+		<operation>
+			<search position="before"><![CDATA['maintenance' => array($txt['attachment_manager_maintenance']),
+					),
+				),
+			),
+		),]]></search>
+			<add><![CDATA[
+		'animemanager' => array(
+			'title' => $txt['an-adminCatTitle'],
+			'permission' => array('sp_admin', 'sp_anime_manager','sp_anime_manager_series','sp_anime_manager_chapters', 'sp_anime_manager_news'),
+			'areas' => array(
+				'an-info' => array(
+					'label' => $txt['an-adminInfo'],
+					'file' => 'AnimeAdmin.php',
+					'function' => 'anime_admin_main',
+					'permission' => array('sp_admin', 'sp_anime_manager','sp_anime_manager_series','sp_anime_manager_chapters', 'sp_anime_manager_news'),
+					'subsections' => array(
+						'info' => array($txt['an-info']),
+						'tutorials' => array($txt['an-tutorials']),
+						'team' => array($txt['an-team']),
+					),
+				),
+				'an-maintenance' => array(
+					'label' => $txt['an-adminMaintenance'],
+					'file' => 'AnimeAdminMaintenance.php',
+					'function' => 'anime_admin_maintenance_main',
+					'permission' => array('sp_admin', 'sp_anime_manager'),
+					'subsections' => array(
+						'newsNoPost' => array($txt['an-adminMaintenanceNewsPost']),
+						'seriesNoPost' => array($txt['an-adminMaintenanceSeriesPost']),
+						'sagasNoPost' => array($txt['an-adminMaintenanceSagasPost']),
+						'chaptersNoPost' => array($txt['an-adminMaintenanceChaptersPost']),
+						//'imagesNoChapter' => array($txt['an-adminMaintenanceImagesChapter']),
+						'updateNews' => array($txt['an-adminMaintenanceNewsUpdate']),
+						'updateSeries' => array($txt['an-adminMaintenanceSeriesUpdate']),
+						'updateSagas' => array($txt['an-adminMaintenanceSagasUpdate']),
+						'updateChapters' => array($txt['an-adminMaintenanceChaptersUpdate']),
+					),
+				),
+				'an-categories' => array(
+					'label' => $txt['an-adminCategory'],
+					'file' => 'AnimeAdminCategory.php',
+					'function' => 'anime_admin_category_main',
+					'permission' => array('sp_admin', 'sp_anime_manager'),
+					'subsections' => array(
+						'listCategory' => array($txt['an-adminListCategory']),
+						'addCategory' => array($txt['an-adminAddCategory']),
+						//'deleteCategory' => array($txt['an-adminDeleteCategory']),
+					),
+				),
+				'an-series' => array(
+					'label' => $txt['an-adminSeries'],
+					'file' => 'AnimeAdminSeries.php',
+					'function' => 'anime_admin_series_main',
+					'permission' => array('sp_admin', 'sp_anime_manager','sp_anime_manager_series'),
+					'subsections' => array(
+						'listSeries' => array($txt['an-adminListSeries']),
+						'addSeries' => array($txt['an-adminAddSeries']),
+						//'deleteSeries' => array($txt['an-adminDeleteSeries']),
+					),
+				),
+				'an-sagas' => array(
+					'label' => $txt['an-adminSagas'],
+					'file' => 'AnimeAdminSagas.php',
+					'function' => 'anime_admin_sagas_main',
+					'permission' => array('sp_admin', 'sp_anime_manager','sp_anime_manager_series'),
+					'subsections' => array(
+						'listSagas' => array($txt['an-adminListSagas']),
+						'addSagas' => array($txt['an-adminAddSagas']),
+						//'deleteSagas' => array($txt['an-adminDeleteSagas']),
+					),
+				),
+				'an-chapters' => array(
+					'label' => $txt['an-adminChapters'],
+					'file' => 'AnimeAdminChapters.php',
+					'function' => 'anime_admin_chapters_main',
+					'permission' => array('sp_admin', 'sp_anime_manager','sp_anime_manager_chapters'),
+					'subsections' => array(
+						'listUnpublishedChapters' => array($txt['an-adminListUnpublishedChapters']),
+						'listChapters' => array($txt['an-adminListChapters']),
+						'addChapters' => array($txt['an-adminAddChapters']),
+						//'deleteChapter' => array($txt['an-adminDeleteChapters']),
+					),
+				),
+				'an-news' => array(
+					'label' => $txt['an-adminNews'],
+					'file' => 'AnimeAdminNews.php',
+					'function' => 'anime_admin_news_main',
+					'permission' => array('sp_admin', 'sp_anime_manager', 'sp_anime_manager_news'),
+					'subsections' => array(
+						'lastNews' => array($txt['an-adminLastNews']),
+						'listNews' => array($txt['an-adminListNews']),
+						'addNews' => array($txt['an-adminAddNews']),
+						//'deleteNews' => array($txt['an-adminDeleteNews']),
+					),
+				),
+				'an-servers' =>array(
+					'label' => $txt['an-adminServers'],
+					'file' => 'AnimeAdminServers.php',
+					'function' => 'anime_admin_servers_main',
+					'permission' => array('sp_admin', 'sp_anime_manager'),
+					'subsections' => array(
+						'listServers' => array($txt['an-adminServersList']),
+						'addServers' => array($txt['an-adminServersAdd']),
+						//'deleteServers' => array($txt['an-adminServersDelete']),
+					),
+				),
+			),
+		),]]></add>
+		</operation>
+	</file>
+	<file name="$sourcedir/Subs.php">
+		<operation>
+			<search position="replace"><![CDATA[$context['allow_admin'] = allowedTo(array('admin_forum', 'manage_boards', 'sp_admin', 'sp_manage_settings', 'sp_manage_blocks', 'sp_manage_articles', 'sp_manage_pages', 'sp_manage_shoutbox', 'manage_permissions', 'moderate_forum', 'manage_membergroups', 'manage_bans', 'send_mail', 'edit_news', 'manage_attachments', 'manage_smileys'));]]></search>
+			<add><![CDATA[$context['allow_admin'] = allowedTo(array('admin_forum', 'manage_boards', 'sp_admin', 'sp_manage_settings', 'sp_manage_blocks', 'sp_manage_articles', 'sp_manage_pages', 'sp_manage_shoutbox', 'manage_permissions', 'moderate_forum', 'manage_membergroups', 'manage_bans', 'send_mail', 'edit_news', 'manage_attachments', 'manage_smileys', 'sp_anime_manager','sp_anime_manager_series','sp_anime_manager_chapters', 'sp_anime_manager_news'));]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[
+					'featuresettings' => array(
+						'title' => $txt['modSettings_title'],
+						'href' => $scripturl . '?action=admin;area=featuresettings',
+						'show' => allowedTo('admin_forum'),
+					),]]></search>
+			<add><![CDATA[
+					'animemanager' => array(
+						'title' => $txt['an-adminCatTitle'],
+						'href' => $scripturl . '?action=admin;area=an-info',
+						'show' => allowedTo(array('sp_admin', 'sp_anime_manager','sp_anime_manager_series','sp_anime_manager_chapters', 'sp_anime_manager_news')),
+					),]]></add>
+		</operation>
+	</file>
+	<file name="$sourcedir/ManagePermissions.php">
+		<operation>
+			<search position="before"><![CDATA['sp_auto_article_approval' => array(false, 'sp', 'sp'),]]></search>
+			<add><![CDATA[
+			'sp_anime_manager' => array(false, 'sp', 'sp'),
+			'sp_anime_manager_news' => array(false, 'sp', 'sp'),
+			'sp_anime_manager_series' => array(false, 'sp', 'sp'),
+			'sp_anime_manager_chapters' => array(false, 'sp', 'sp'),]]></add>
+		</operation>
+	</file>
+	<file name="$languagedir/SPortal.spanish_es-utf8.php">
+		<operation>
+			<search position="after"><![CDATA[
+?>]]></search>
+			<add><![CDATA[
+$txt['an-adminCatTitle'] = "Gestor de Anime";
+]]></add>
+		</operation>
+	</file>
+</modification>

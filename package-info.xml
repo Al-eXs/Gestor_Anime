@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>Gluz:AnimeManager</id>
+	<name>Gestor de Anime</name>
+	<version>0.1.1</version>
+	<type>modification</type>
+	
+	<install for="2.0 - 2.0.99">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<database>install.php</database>
+		<modification>install.xml</modification>
+		<require-file name="files/languages/Anime.spanish_es-utf8.php" destination="$languagedir" />
+		<require-file name="files/sources/Anime.php" destination="$sourcedir" />
+		<require-file name="files/sources/AnimeAdmin.php" destination="$sourcedir" />
+		<require-file name="files/sources/AnimeAdminCategory.php" destination="$sourcedir" />
+		<require-file name="files/sources/AnimeAdminChapters.php" destination="$sourcedir" />
+		<require-file name="files/sources/AnimeAdminMaintenance.php" destination="$sourcedir" />
+		<require-file name="files/sources/AnimeAdminNews.php" destination="$sourcedir" />
+		<require-file name="files/sources/AnimeAdminSagas.php" destination="$sourcedir" />
+		<require-file name="files/sources/AnimeAdminSeries.php" destination="$sourcedir" />
+		<require-file name="files/sources/AnimeAdminServers.php" destination="$sourcedir" />
+		<require-file name="files/sources/Subs-Anime.php" destination="$sourcedir" />
+		<require-file name="files/templates/AnimeAdmin.template.php" destination="$themedir" />
+		<require-file name="files/templates/AnimeAdminCategory.template.php" destination="$themedir" />
+		<require-file name="files/templates/AnimeAdminChapters.template.php" destination="$themedir" />
+		<require-file name="files/templates/AnimeAdminMaintenance.template.php" destination="$themedir" />
+		<require-file name="files/templates/AnimeAdminNews.template.php" destination="$themedir" />
+		<require-file name="files/templates/AnimeAdminSagas.template.php" destination="$themedir" />
+		<require-file name="files/templates/AnimeAdminSeries.template.php" destination="$themedir" />
+		<require-file name="files/templates/AnimeAdminServers.template.php" destination="$themedir" />
+		<redirect url="$scripturl?action=admin;area=an-info" />
+	</install>
+	
+	<uninstall for="2.0 - 2.0.99">
+		<modification reverse="true">install.xml</modification>
+		<remove-file name="$languagedir/Anime.spanish_es-utf8.php" />
+		<remove-file name="$sourcedir/AnimeAdmin.php" />
+		<remove-file name="$sourcedir/AnimeAdminCategory.php" />
+		<remove-file name="$sourcedir/AnimeAdminChapters.php" />
+		<remove-file name="$sourcedir/AnimeAdminMaintenance.php" />
+		<remove-file name="$sourcedir/AnimeAdminNews.php" />
+		<remove-file name="$sourcedir/AnimeAdminSagas.php" />
+		<remove-file name="$sourcedir/AnimeAdminSeries.php" />
+		<remove-file name="$sourcedir/AnimeAdminServers.php" />
+		<remove-file name="$sourcedir/Subs-Anime.php" />
+		<remove-file name="$themedir/AnimeAdmin.template.php" />
+		<remove-file name="$themedir/AnimeAdminCategory.template.php" />
+		<remove-file name="$themedir/AnimeAdminChapters.template.php" />
+		<remove-file name="$themedir/AnimeAdminMaintenance.template.php" />
+		<remove-file name="$themedir/AnimeAdminNews.template.php" />
+		<remove-file name="$themedir/AnimeAdminSagas.template.php" />
+		<remove-file name="$themedir/AnimeAdminSeries.template.php" />
+		<remove-file name="$themedir/AnimeAdminServers.template.php" />
+		<code>uninstall.php</code>
+		<redirect url="$scripturl?action=admin;area=packages" />
+	</uninstall>
+</package-info>
